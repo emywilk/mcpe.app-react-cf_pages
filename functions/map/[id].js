@@ -1,12 +1,7 @@
 export async function onRequest(context) {
-    console.log('Function called:', new Date().toISOString());
-    console.log('Request URL:', context.request.url);
-    
     const { request } = context;
     const url = new URL(request.url);
   
-    console.log('Injecting meta tags...');
-    
     // Only process /map/[id] routes
     if (!url.pathname.startsWith('/map/')) {
       return context.next();
