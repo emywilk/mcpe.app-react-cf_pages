@@ -1,70 +1,102 @@
-# Getting Started with Create React App
+# MCPE.app - Minecraft Maps Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern web platform for discovering and sharing Minecraft maps, with seamless integration to the MCPE Maps Android app.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Browse and discover Minecraft maps
+- Dynamic map pages with social media preview support
+- Server-side meta tags injection for optimal sharing
+- Mobile-first responsive design with Tailwind CSS
+- Direct integration with MCPE Maps Android app
+- SEO-optimized content
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Frontend**: React 18
+- **Styling**: Tailwind CSS
+- **Routing**: React Router DOM
+- **Deployment**: Cloudflare Pages
+- **Serverless Functions**: Cloudflare Workers
+- **Carousel**: Swiper
+- **Package Manager**: npm/bun
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js (LTS version recommended)
+- npm or bun package manager
+- Wrangler CLI (for Cloudflare Pages deployment)
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository
+2. Install dependencies:
+```bash
+npm install
+# or if using bun
+bun install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Development
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To run the development server:
 
-### `npm run eject`
+```bash
+npm run dev
+# or
+bun run dev
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+This will:
+1. Build the React application
+2. Start Wrangler Pages dev server
+3. Watch for changes
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+For React-only development without Cloudflare Workers:
+```bash
+npm run dev-react
+# or
+bun run dev-react
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Building for Production
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm run build
+# or
+bun run build
+```
 
-## Learn More
+This creates a production build in the `build` directory and copies the serverless functions.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Deployment
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Deploy to Cloudflare Pages:
 
-### Code Splitting
+```bash
+npm run deploy
+# or
+bun run deploy
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Project Structure
 
-### Analyzing the Bundle Size
+- `/src` - React application source code
+  - `/components` - React components including MapPage
+- `/public` - Static assets including images
+- `/functions` - Cloudflare Workers functions
+  - `/map/[id].js` - Server-side meta tags injection for social sharing
+- `/build` - Production build output
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Map Sharing
 
-### Making a Progressive Web App
+Maps can be shared with custom metadata using URL parameters:
+- `title` - The title of the map
+- `desc` - Description of the map
+- `img` - URL to the map's preview image
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Example:
+```
+https://mcpe.app/map/123?title=My%20Cool%20Map&desc=An%20awesome%20adventure%20map&img=/images/maps/123.jpg
