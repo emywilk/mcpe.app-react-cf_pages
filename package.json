@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "react-scripts start",
-    "build": "react-scripts build",
-    "deploy": "react-scripts build & wrangler pages deploy ./build"
+    "dev-react": "react-scripts start",
+    "build": "react-scripts build && cp -r functions build/",
+    "dev": "npm run build && wrangler pages dev",
+    "deploy": "npm run build && wrangler pages deploy ./build"
   },
   "dependencies": {
     "react": "^18.3.1",
