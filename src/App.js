@@ -83,7 +83,7 @@ function App() {
           
           <div className="text-center md:mt-32 mt-4">
             <a href="https://play.google.com/store/apps/details?id=mnw.mcpe_maps&utm_source=mcpe.app&utm_medium=website&utm_campaign=homepage" target="_blank" rel="noopener noreferrer">
-              <img className="max-w-md w-full mx-auto" src="images/google-play-badge.png" alt="Get it on Google Play" />
+              <img className="max-w-md w-full mx-auto" src="images/google-play-badge.webp" alt="Get it on Google Play" />
             </a>
           </div>
         </div>
