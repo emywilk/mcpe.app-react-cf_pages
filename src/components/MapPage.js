@@ -14,7 +14,7 @@ function MapPage() {
     setMapData({
       title: params.get("title") || "Minecraft Map",
       desc: params.get("desc") || "Check out this awesome Minecraft map!",
-      img: params.get("img") || "/images/default-map.webp",
+      img: params.get("img") || "/images/unnamed-3.webp",
     });
   }, [id]);
 

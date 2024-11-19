@@ -28,7 +28,7 @@ function App() {
     <div className="bg-white">
       <header className="border-b">
         <div className="container mx-auto px-4 py-4">
-          <img className="h-8 md:h-12" src="images/Screenshot2022-03-23201533.png" alt="MineMaps Logo" />
+          <img className="h-8 md:h-12" src="images/a.qunash.png" alt="MineMaps Logo" />
         </div>
       </header>
 
