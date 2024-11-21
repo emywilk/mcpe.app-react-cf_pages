@@ -62,7 +62,7 @@ function MapPage() {
             <div className="space-y-2">
               {/* Primary CTA */}
               <a
-                href={`https://play.google.com/store/apps/details?id=mnw.mcpe_maps&utm_source=${encodeURIComponent(mapData.title)}&utm_medium=website`}
+                href={`https://play.google.com/store/apps/details?id=mnw.mcpe_maps&utm_source=map_sharing&utm_content=${encodeURIComponent(mapData.title)}&utm_medium=website`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-full"
