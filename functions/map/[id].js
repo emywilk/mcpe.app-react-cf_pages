@@ -1,51 +1,72 @@
+import { getMapById } from '../utils/db';
+
 export async function onRequest(context) {
-    const { request } = context;
-    const url = new URL(request.url);
+  const { request, env } = context;
+  const url = new URL(request.url);
   
-    // Only process /map/[id] routes
-    if (!url.pathname.startsWith('/map/')) {
-      return context.next();
-    }
-  
-    // Get the response from the origin
-    const response = await context.next();
-    const contentType = response.headers.get('content-type');
-    
-    // Only process HTML responses
-    if (!contentType || !contentType.includes('text/html')) {
-      return response;
-    }
-  
-    // Get URL parameters
-    const params = new URLSearchParams(url.search);
-    const title = params.get('title') || 'Minecraft Map';
-    const desc = params.get('desc') || 'Check out this awesome Minecraft map!';
-    const img = params.get('img') || '/images/default-map.webp';
-  
-    // Create meta tags
-    const metaTags = `
-      <meta name="description" content="${desc}">
-      <meta property="og:title" content="${title} - MineMaps">
-      <meta property="og:description" content="${desc}">
-      <meta property="og:image" content="${img}">
-      <meta property="og:url" content="${url.href}">
-      <meta property="og:type" content="website">
-      <meta property="og:site_name" content="MineMaps">
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:title" content="${title} - MineMaps">
-      <meta name="twitter:description" content="${desc}">
-      <meta name="twitter:image" content="${img}">
-    `;
-  
-    // Get the response text
-    let html = await response.text();
-  
-    // Insert meta tags after the <head> tag
-    html = html.replace('</head>', `${metaTags}</head>`);
-  
-    // Return modified response
-    return new Response(html, {
-      headers: response.headers
-    });
+  // Only process /map/[id] routes
+  if (!url.pathname.startsWith('/map/')) {
+    return context.next();
   }
+
+  // Extract map ID from URL
+  const mapId = url.pathname.split('/')[2];
   
+  // Check if this is an API request (Accept: application/json)
+  const acceptHeader = request.headers.get('Accept') || '';
+  const wantsJson = acceptHeader.includes('application/json');
+
+  try {
+    // Try to get map data from D1
+    const mapData = await getMapById(env, mapId);
+
+    // If no data found in D1, use URL parameters or return 404
+    if (!mapData) {
+      if (wantsJson) {
+        return new Response(JSON.stringify({ error: 'Map not found' }), {
+          status: 404,
+          headers: { 'Content-Type': 'application/json' }
+        });
+      }
+      
+      const params = new URLSearchParams(url.search);
+      const fallbackData = {
+        title: params.get('title') || 'Minecraft Map',
+        desc: params.get('desc') || 'Check out this awesome Minecraft map!',
+        img: params.get('img') || '/images/default-map.webp',
+        types: []
+      };
+
+      if (wantsJson) {
+        return new Response(JSON.stringify(fallbackData), {
+          headers: { 'Content-Type': 'application/json' }
+        });
+      }
+
+      // Redirect to the maps page if no data and not an API request
+      return Response.redirect('https://mcpe.app/maps');
+    }
+
+    // Return JSON if requested
+    if (wantsJson) {
+      return new Response(JSON.stringify(mapData), {
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
+    // Otherwise, let the frontend handle the route
+    return context.next();
+  } catch (error) {
+    console.error('Error fetching map:', error);
+    
+    if (wantsJson) {
+      return new Response(JSON.stringify({ error: 'Internal server error' }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+    
+    // Redirect to maps page on error for non-API requests
+    return Response.redirect('https://mcpe.app/maps');
+  }
+}
