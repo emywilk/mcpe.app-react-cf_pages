@@ -97,3 +97,21 @@ export async function searchMaps(env, query, { page = 1, limit = 12 } = {}) {
     total: countResult?.total || 0
   };
 }
+
+// Get unique map types from database
+export async function getUniqueMapTypes(env) {
+  const result = await env.DB.prepare('SELECT DISTINCT type FROM maps WHERE type IS NOT NULL')
+    .all();
+  
+  // Collect all types and split them (since they're comma-separated in DB)
+  const types = new Set();
+  result.results.forEach(row => {
+    if (row.type) {
+      row.type.split(/\s*,\s*/).forEach(type => {
+        types.add(type.trim().toLowerCase());
+      });
+    }
+  });
+  
+  return Array.from(types).sort();
+}

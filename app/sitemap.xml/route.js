@@ -1,26 +1,15 @@
-import { getAllMaps } from "@/app/lib/db";
+import { getAllMaps, getUniqueMapTypes } from "@/app/lib/db";
 
 export const runtime = "edge";
 export const dynamic = "force-dynamic";
 export const revalidate = 86400; // 24 hours
-
-const mapTypes = [
-  "one block",
-  "survival",
-  "adventure",
-  "parkour",
-  "pvp",
-  "redstone",
-  "creation",
-  "horror",
-  "game",
-];
 
 export async function GET(request, context) {
   try {
     // Get DB from either context.env (Cloudflare) or process.env (local)
     const env = context?.env || { DB: process.env.DB };
     const maps = await getAllMaps(env);
+    const mapTypes = await getUniqueMapTypes(env);
     const baseUrl = "https://mcpe.app";
 
     // Generate URLs for static and type-specific pages
