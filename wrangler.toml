@@ -1,0 +1,44 @@
+name = "mcpe-app"
+compatibility_date = "2024-03-26"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".vercel/output/static"
+
+# KV namespace for caching
+[[kv_namespaces]]
+binding = "CACHE"
+id = "e8ae4859ab984ec98c6e828ba4a42dc1"
+
+[env.production]
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "mcpe-maps"
+database_id = "b6f0721d-afd9-4f52-806a-2b967851cb50"
+
+[[env.production.kv_namespaces]]
+binding = "CACHE"
+id = "e8ae4859ab984ec98c6e828ba4a42dc1"
+
+# Production environment variables will be set in Cloudflare Pages dashboard
+[env.production.vars]
+IMAGE_CDN_URL = "https://mcpe.app/images/maps/l_size"
+
+# Preview environment (for PRs and branch deployments)
+[env.preview]
+[[env.preview.d1_databases]]
+binding = "DB"
+database_name = "mcpe-maps-dev"
+database_id = "7faae035-762c-4ca5-b1c9-5b7b59b97a4e"
+
+[[env.preview.kv_namespaces]]
+binding = "CACHE"
+id = "e8ae4859ab984ec98c6e828ba4a42dc1"
+
+# Preview environment variables (for Pull Request deployments)
+[env.preview.vars]
+IMAGE_CDN_URL = "https://mcpe.app/images/maps/l_size"
+
+# Local development - use this when running wrangler pages dev
+[[d1_databases]]
+binding = "DB"
+database_name = "mcpe-maps-dev"
+database_id = "7faae035-762c-4ca5-b1c9-5b7b59b97a4e"
