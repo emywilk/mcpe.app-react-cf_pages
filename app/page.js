@@ -75,7 +75,7 @@ export default async function HomePage({ searchParams }) {
         .join(' ')
     : '';
 
-  const title = type ? <><strong>{formattedType}</strong> maps for Minecraft</> : 'MineMaps';
+  const title = type ? <><strong>{formattedType}</strong> maps for Minecraft</> : 'MineMaps: download Minecraft maps';
   const description = type 
     ? <>Found {initialData.total} <strong>{formattedType}</strong> maps for Minecraft PE</>
     : 'Install hundreds of awesome maps for Minecraft in one click!';

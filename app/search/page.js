@@ -118,7 +118,7 @@ export default async function SearchPage({ searchParams }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
         <PageLayout
-          title={`Search results for &quot;${cleanQuery}&quot;`}
+          title={`Search results for "${cleanQuery}"`}
           description={initialData.total > 0 
             ? <>Found <strong>{initialData.total}</strong> Minecraft maps matching &quot;{cleanQuery}&quot;.</>
             : 'No maps found. Try different keywords or browse our collection of free Minecraft PE maps including adventure maps, parkour maps, and more.'}

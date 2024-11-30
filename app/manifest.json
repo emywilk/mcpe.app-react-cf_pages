@@ -1,0 +1,21 @@
+{
+  "name": "MineMaps - Minecraft PE Maps",
+  "short_name": "MineMaps",
+  "description": "Download free Minecraft maps instantly! One Block maps and more for MCPE.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#16a34a",
+  "icons": [
+    {
+      "src": "/images/minemaps_logo.webp",
+      "sizes": "180x180",
+      "type": "image/webp"
+    },
+    {
+      "src": "/images/minemaps_logo_hd.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}
