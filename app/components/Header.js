@@ -14,7 +14,7 @@ export default function Header() {
                 alt="MineMaps Logo"
                 width={48}
                 height={48}
-                className="h-12 w-auto rounded-xl"
+                className="h-12 w-12 rounded-xl"
                 priority
               />
             </Link>
@@ -29,22 +29,6 @@ export default function Header() {
           <div className="flex-1 max-w-xl mx-6">
             <SearchBar />
           </div>
-
-          <a 
-            href="https://play.google.com/store/apps/details?id=mnw.mcpe_maps&utm_source=mcpe.app&utm_medium=website&utm_campaign=header" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="hover:opacity-90 transition-opacity"
-          >
-            <Image
-              src="/images/google-play-badge.webp"
-              alt="Get it on Google Play"
-              width={144}
-              height={48}
-              className="h-12 w-auto"
-              priority
-            />
-          </a>
         </div>
       </div>
     </header>
