@@ -106,8 +106,8 @@ export default function MapsGrid({ initialData, selectedType, searchQuery }) {
   }
 
   return (
-    <div className="space-y-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="space-y-4 md:space-y-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {maps.map((map, index) => {
           if (maps.length === index + 1) {
             return <MapCard ref={lastMapElementRef} key={map.id} map={map} />
@@ -117,8 +117,8 @@ export default function MapsGrid({ initialData, selectedType, searchQuery }) {
       </div>
 
       {loading && (
-        <div className="flex justify-center py-8">
-          <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent" />
+        <div className="flex justify-center py-4 md:py-8">
+          <div className="animate-spin rounded-full h-10 w-10 md:h-12 md:w-12 border-4 border-blue-500 border-t-transparent" />
         </div>
       )}
     </div>

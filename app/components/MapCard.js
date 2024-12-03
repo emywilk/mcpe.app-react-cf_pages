@@ -23,7 +23,7 @@ const MapCard = forwardRef(({ map }, ref) => {
       </div>
       <div className="p-4 flex flex-col flex-1">
         <div className="flex-1">
-          <h2 className="text-xl font-semibold mb-2 line-clamp-1">{map.title}</h2>
+          <h2 className="text-xl font-semibold mb-2 line-clamp-1 text-gray-900">{map.title}</h2>
           <p className="text-gray-600 line-clamp-2">{map.desc}</p>
         </div>
         {map.types && (

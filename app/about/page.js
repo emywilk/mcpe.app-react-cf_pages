@@ -25,10 +25,10 @@ const screenshots = [
 export default function AboutPage() {
   return (
     <div className="bg-white">
-      <main className="py-12">
+      <main className="py-6 md:py-12">
         <div className="md:w-3/4 mx-auto px-4">
-          <div className="flex gap-8 md:flex-row flex-col">
-            <div>
+          <div className="flex flex-col items-center md:items-start md:flex-row md:gap-8">
+            <div className="text-center md:text-left max-w-xl">
               <Link 
                 href={PLAY_STORE_URL}
                 target="_blank"
@@ -38,20 +38,22 @@ export default function AboutPage() {
                 <Image
                   src="/images/minemaps_logo_hd.webp"
                   alt="MineMaps app icon"
-                  width={128}
-                  height={128}
-                  className="rounded-3xl"
+                  width={96}
+                  height={96}
+                  className="rounded-2xl md:rounded-3xl md:w-32 md:h-32 w-24 h-24"
                   priority
                 />
               </Link>
-              <h1 className="font-alata text-4xl mt-6 mb-4">Download Minecraft Maps</h1>
-              <p className="text-gray-700">
+              <h1 className="font-alata text-3xl md:text-4xl mt-4 md:mt-6 mb-3 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+                Download Minecraft Maps
+              </h1>
+              <p className="text-gray-700 text-sm md:text-base">
                 Download the best Minecraft maps for free! Browse our collection of amazing maps for Minecraft PE.<br /><br />
                 With <strong>MineMaps</strong> you can explore hundreds of <strong>Minecraft maps</strong> including adventure maps, parkour maps, and building maps. <strong>Download maps for Minecraft</strong> with just one tap and start playing instantly!
               </p>
             </div>
-            <div className="relative h-fit md:w-[180%]">
-              <div className="absolute w-full h-full bg-yellow-400 rounded-lg transform translate-x-2 translate-y-2" />
+            <div className="relative h-fit md:w-[180%] mt-6 md:mt-0">
+              <div className="absolute w-full h-full bg-yellow-400 rounded-lg transform translate-x-1 translate-y-1 md:translate-x-2 md:translate-y-2" />
               <Image
                 src="/images/unnamed-3.webp"
                 alt="MineMaps app screenshot"
@@ -63,10 +65,10 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="flex items-center gap-4 mt-16 md:flex-row flex-col">
-            <div className="hidden md:flex md:flex-row md:gap-4 md:w-full">
+          <div className="mt-8 md:mt-16">
+            <div className="hidden md:grid md:grid-cols-4 gap-4">
               {screenshots.map((screenshot, index) => (
-                <div key={index} className="relative md:w-1/4">
+                <div key={index} className="relative">
                   <Image
                     src={screenshot.src}
                     alt={screenshot.alt}
@@ -77,33 +79,28 @@ export default function AboutPage() {
                   />
                 </div>
               ))}
-              <p className="md:w-1/4 text-lg">
-                You will find all kinds of worlds: from houses and huge cities to PvP battle mini-games and adventures, parkour, hide and seek, one block skyblock and so much more!
-              </p>
             </div>
-            
-            <MobileScreenshots />
-            
             <div className="md:hidden">
-              <p className="text-lg">
-                You will find all kinds of worlds: from houses and huge cities to PvP battle mini-games and adventures, parkour, hide and seek, one block skyblock and so much more!
-              </p>
+              <MobileScreenshots />
             </div>
+            <p className="text-center md:text-left text-sm md:text-lg mt-6 md:mt-8 text-gray-700 px-4 md:px-0">
+              You will find all kinds of worlds: from houses and huge cities to PvP battle mini-games and adventures, parkour, hide and seek, one block skyblock and so much more!
+            </p>
           </div>
           
-          <div className="text-center md:mt-32 mt-4">
+          <div className="text-center mt-8 md:mt-16">
             <Link 
               href={PLAY_STORE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block"
+              className="inline-block w-full md:w-auto"
             >
               <Image
                 src="/images/google-play-badge.webp"
                 alt="Get it on Google Play"
                 width={646}
                 height={250}
-                className="max-w-md w-full mx-auto rounded-3xl"
+                className="max-w-md w-full mx-auto rounded-2xl md:rounded-3xl"
                 priority
               />
             </Link>

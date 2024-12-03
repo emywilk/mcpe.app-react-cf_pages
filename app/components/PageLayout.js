@@ -3,13 +3,13 @@ import Image from 'next/image';
 export default function PageLayout({ title, description, children }) {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <div className="container mx-auto max-w-6xl px-4 py-8">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-4 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+      <div className="container mx-auto max-w-6xl px-4 py-4 md:py-8">
+        <div className="text-center mb-6 md:mb-12">
+          <h1 className="text-3xl md:text-5xl font-black text-gray-900 mb-2 md:mb-4 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
             {title}
           </h1>
           {description && (
-            <div className="text-xl text-gray-600 mb-6">
+            <div className="text-lg md:text-xl text-gray-600 mb-4 md:mb-6">
               {description}
             </div>
           )}

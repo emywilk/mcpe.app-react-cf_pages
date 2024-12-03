@@ -108,18 +108,17 @@ export default async function MapPage(props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-        <div className="container mx-auto max-w-6xl px-4 py-8">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-4 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+        <div className="container mx-auto max-w-6xl px-4 py-4">
+          <div className="text-center mb-4">
+            <h1 className="text-3xl md:text-5xl font-black text-gray-900 mb-2 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
               MineMaps
             </h1>
-            <p className="text-xl text-gray-600">
+            <p className="text-lg md:text-xl text-gray-600">
               Install hundreds of awesome maps for Minecraft in one click!
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-white rounded-2xl shadow-xl p-4 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Left Column - Image and Title */}
             <div className="space-y-6">
               <div className="relative group">
